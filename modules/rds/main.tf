@@ -13,6 +13,12 @@ resource "aws_db_instance" "default" {
   publicly_accessible                 = true
   iam_database_authentication_enabled = true
 
-  username = var.database_username
-  password = var.database_password
+  username = var.username
+  password = var.password
+
+  vpc_security_group_ids = [var.security_group_id]
+
+  tags = {
+    project = "aws-rds"
+  }
 }
